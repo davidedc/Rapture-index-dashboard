@@ -35,15 +35,9 @@
     @media all and (min-width: 400px) {  #leftHeader  {   font-size:1.6em;  } }
     @media all and (min-width: 400px) {  #rightHeader  {   font-size:1.5em;  } }
 
-    @media all and (min-width: 400px) and ( min-height: 200px ) {  #indexNumber  {   font-size:14.3em;  } }
-    @media all and (min-width: 400px) and ( min-height: 700px ) {  #indexNumber  {   font-size:21em;  } }
 
-    @media all and (min-width: 400px) {  #rankChange  {   font-size:4.0em;  } }
-
-    @media all and (min-width: 300px) {  #highMark  {   font-size:1.3em;  } }
-    @media all and (min-width: 300px) {  #lowMark  {   font-size:1.3em;  } }
-    @media all and (min-width: 600px) {  #highMark  {   font-size:2.0em;  } }
-    @media all and (min-width: 600px) {  #lowMark  {   font-size:2.0em;  } }
+    @media all and (min-width: 300px) {  div.highAndLowMarks  {   font-size:1.3em;  } }
+    @media all and (min-width: 600px) {  div.highAndLowMarks  {   font-size:2.0em;  } }
 
     @media all and (min-width: 300px) and ( min-height: 200px ) {  #currentIndexValue  {   font-size:6.5em;  } }
     @media all and (min-width: 300px) and ( min-height: 700px ) {  #currentIndexValue  {   font-size:6.5em;  } }
@@ -56,12 +50,9 @@
     and (max-device-width : 1024px) 
     and (orientation : portrait)
     and (-webkit-min-device-pixel-ratio: 1)  {
-
-      #leftHeader  {   font-size:3em;  }
-      #rightHeader  {   font-size:2em;  }
-        #indexNumber  {   font-size:26em;  }
-    #rankChange  {   font-size:4.0em;  } 
-
+        #leftHeader  {   font-size:3em;  }
+        #rightHeader  {   font-size:2em;  }
+        #rankChange  {   font-size:4.0em;  } 
     }
 
     </style>
@@ -97,14 +88,14 @@
                         <div id="bigCenterCell" class="showBorders" style="min-height: 80%; width: 100%;">
                             <div id="bigCellTopMargin" class="showBorders" style="min-height: 10%; width: 100%;">
                             </div>
-                            <div id="indexNumber1" class="showBorders" style="min-height: 55%; width: 100%; text-align: center; font-family: Arial; color: #FFFFFF;">
+                            <div class="showBorders" style="min-height: 55%; width: 100%; text-align: center; font-family: Arial; color: #FFFFFF;">
 
                                 <div id="leftColumn" class="allWhiteBorder" style="height: 55%; width: 20%; white-space: nowrap; overflow: hidden;float: left;">
 
                                     <!-- here are the percentages in the verticals to be tweaked -->
                                     <div id="bigCellTopMargin" class="showBorders" style="min-height: 10%; width: 90%;">
                                     </div>
-                                    <div id="indexNumber2" class="showBorders" style="min-height: 90%; width: 100%; text-align: center; font-family: Arial; background-color: #FFFFFF;">
+                                    <div class="showBorders" style="min-height: 90%; width: 100%; text-align: center; font-family: Arial; background-color: #FFFFFF;">
                                     </div>
 
                                 </div>
@@ -114,7 +105,7 @@
 
                                 <div id="rightColumn" class="showBorders" style="height: 55%; width: 70%; white-space: nowrap; overflow: hidden;float: left;position: relative; text-align: center;">
 
-                                    <div id="highMark" class="showBorders" style="position: absolute; top: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
+                                    <div id="highMark" class="showBorders highAndLowMarks" style="position: absolute; top: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
                                     <b>High:</b> 58-12 dec 1993
                                     </div>
 
@@ -123,7 +114,7 @@
                                     </div>
                                     
 
-                                    <div id="lowMark" class="showBorders" style="position: absolute; bottom: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
+                                    <div id="lowMark" class="showBorders highAndLowMarks" style="position: absolute; bottom: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
                                     <b>Low:</b> 58-12 dec 1993
                                     </div>
 
