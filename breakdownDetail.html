@@ -27,13 +27,13 @@
 
     @media all and (min-width: 400px) {  #rightHeader  {   font-size:1.5em;  } }
 
-    @media all and (min-width: 400px) and ( min-height: 200px ) {  #indexNumber  {   font-size:3em;  } }
-    @media all and (min-width: 400px) and ( min-height: 700px ) {  #indexNumber  {   font-size:4em;  } }
+    @media all and (min-width: 400px) and ( min-height: 200px ) {  #breakDownHeader  {   font-size:3em;  } }
+    @media all and (min-width: 400px) and ( min-height: 700px ) {  #breakDownHeader  {   font-size:4em;  } }
 
-    @media all and (min-width: 400px) and ( min-height: 200px ) {  #indexNumber2  {   font-size:7em;  } }
-    @media all and (min-width: 400px) and ( min-height: 700px ) {  #indexNumber2  {   font-size:7em;  } }
+    @media all and (min-width: 400px) and ( min-height: 200px ) {  #breakDownValue  {   font-size:7em;  } }
+    @media all and (min-width: 400px) and ( min-height: 700px ) {  #breakDownValue  {   font-size:7em;  } }
 
-    @media all and (min-width: 400px) {  #rankChange  {   font-size:1.3em;  } }
+    @media all and (min-width: 400px) {  #breakDownComment  {   font-size:1.3em;  } }
 
 
     /* ipad mini */
@@ -42,21 +42,18 @@
     and (max-device-width : 1024px) 
     and (orientation : portrait)
     and (-webkit-min-device-pixel-ratio: 1)  {
-
         #leftHeader  {   font-size:2.5em;  }
         #rightHeader  {   font-size:2.5em;  }
-        #indexNumber  {   font-size:3.5em;  }
-        /*#rankChange  {   font-size:4.0em;  } */
-
+        #breakDownHeader  {   font-size:3.5em;  }
     }
 
     /* surface portrait */
     @media only screen and (min-width: 800px) and (orientation : portrait) {
         #leftHeader  {   font-size:3em;  }
         #rightHeader  {   font-size:3em;  }
-        #indexNumber  {   font-size:5em;  }
-        #indexNumber2  {   font-size:8em;  }
-        #rankChange  {   font-size:2.0em;  }
+        #breakDownHeader  {   font-size:5em;  }
+        #breakDownValue  {   font-size:8em;  }
+        #breakDownComment  {   font-size:2.0em;  }
     }
 
     </style>
@@ -86,17 +83,17 @@
                 <div id="bigCenterCell" class="showBorders" style="min-height: 80%; width: 100%;">
                     <div id="bigCellTopMargin" class="showBorders" style="min-height: 15%; width: 100%;">
                     </div>
-                    <div id="indexNumber" class="showBorders" style="width: 100%; font-family: Arial; color: #FFFFFF;">
+                    <div id="breakDownHeader" class="showBorders" style="width: 100%; font-family: Arial; color: #FFFFFF;">
                     Beast Government:
                     </div>
-                    <div id="indexNumber2" class="showBorders" style="min-height: 20%; width: 100%; font-family: Arial; color: #FFFFFF;">
+                    <div id="breakDownValue" class="showBorders" style="min-height: 20%; width: 100%; font-family: Arial; color: #FFFFFF;">
                     9
                     </div>
                     <div id="gapBetweenBigNumberAndRankChange" class="showBorders" style="min-height: 0%; width: 100%;">
                     </div>
 
                     <div class="showBorders" style="min-height: 32%; width: 100%; position: relative;">
-                        <div id="rankChange" class="showBorders" style="position: absolute; bottom: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
+                        <div id="breakDownComment" class="showBorders" style="position: absolute; bottom: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
                         (Mat.24:24) Jesus talked about false Christs and false prophets. A false Christ is anyone who claims to be equal to or greater than God. The realization that an individual is placing himself in the role of deity is not always easy to discern.
                         </div>
                     </div>
