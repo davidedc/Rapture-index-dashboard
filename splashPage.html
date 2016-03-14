@@ -4,48 +4,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.01,minimal-ui">
     <style type="text/css">
         html, body {
-            height: 100%;
             margin: 0;
         }
 
         #wrapper {
-            min-height: 100%;
+            height:100vh;
             background-color: #FF9800;
         }
 
-        div.showBorders {
-            //border-style: dotted;
-        }
 
-        div.lowerWhiteBorder {
-            border-style:none none solid none;
-            border-color:white;
-        }
-
-        div.centerContentVertically {
-            position: relative; top: 50%;
-            transform: translateY(-50%);
-        }
-
-    @media all and (min-width: 400px) {  #leftHeader  {   font-size:1.6em;  } }
-
-    @media all and (min-width: 400px) {  #rightHeader  {   font-size:1.5em;  } }
-
-    @media all and (min-width: 400px) and ( min-height: 200px ) {  #indexNumber  {   font-size:14.3em;  } }
-    @media all and (min-width: 400px) and ( min-height: 700px ) {  #indexNumber  {   font-size:21em;  } }
-    @media all and (min-width: 400px) {  #rankChange  {   font-size:4.0em;  } }
-
-
-    @media only screen 
-    and (min-device-width : 768px) 
-    and (max-device-width : 1024px) 
-    and (orientation : portrait)
-    and (-webkit-min-device-pixel-ratio: 1)  {
-
-      #leftHeader  {   font-size:3em;  }
-      #rightHeader  {   font-size:2em;  }
-        #indexNumber  {   font-size:26em;  }
-    #rankChange  {   font-size:4.0em;  } 
 
     }
 
@@ -55,22 +22,11 @@
 <body>
     <div id="wrapper">
 
-        <div id="leftColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
-        </div>
-        <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
-            <div id="topMargin" class="showBorders" style="min-height: 7%; width: 100%;">
-            </div>
-            <div id="middle" style="min-height: 87%; width: 100%;">
+        <div id="centerColumn" class="showBorders" style="max-height: 100vh; position: relative; top: 50%; transform: translateY(-50%); ">
 
-                    <img src="./images/splashPagePic.png" alt="Smiley face" width="80%">
+                    <img src="./images/splashPagePic.png" alt="Smiley face" style="max-height: 100vh; max-width: 100%">
 
-            </div>
-        </div>
-        <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
         </div>
 
-<!--
--->
-        
     </div>
 </body>
