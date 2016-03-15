@@ -5,10 +5,6 @@ carouselInterval = 6000
 raptureIndexData = {}
 
 
-$('#animator').on 'mouseover', ->
-  $('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
-
-$('#animator').on 'mouseout', ->
   
 
 numPages--
