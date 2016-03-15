@@ -38,12 +38,28 @@ setInterval () ->
 
 		else if state % numPages == 1
 			document.getElementById('mainIndexNumber').style.display = 'block'
+			jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
+				duration: 800
+				easing: 'swing'
+				step: ->
+        			document.getElementById('indexNumber').innerHTML = Math.floor @animatedValue
 
 		else if state % numPages == 2
 			document.getElementById('indexWithBar').style.display = 'block'
-			perc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow)
-			document.getElementById('topOfIndicatorBar').style.minHeight = (100-perc) + "%"
-			document.getElementById('bottomOfIndicatorBar').style.minHeight = (perc) + "%"
+			calculatedPerc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow)
+
+			jQuery(perc: 0).animate { perc: calculatedPerc },
+				duration: 800
+				easing: 'swing'
+				step: ->
+					document.getElementById('topOfIndicatorBar').style.minHeight = (100-@perc) + "%"
+					document.getElementById('bottomOfIndicatorBar').style.minHeight = (@perc) + "%"
+
+			jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
+				duration: 800
+				easing: 'swing'
+				step: ->
+        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.floor @animatedValue
 
 
 		else if state % numPages == 3
@@ -100,8 +116,6 @@ loadRaptureIndexData = (APIendpointURL) ->
       if xmlhttp.status == 200
         raptureIndexData = JSON.parse xmlhttp.responseText
 
-        document.getElementById('indexNumber').innerHTML = raptureIndexData.raptureIndexValue
-        document.getElementById('currentIndexValueNextToBar').innerHTML = raptureIndexData.raptureIndexValue
         document.getElementById('highMark').innerHTML = "<b>High:</b> "+ raptureIndexData.recordHigh + " - " + raptureIndexData.highDate
         document.getElementById('lowMark').innerHTML = "<b>Low:</b> "+ raptureIndexData.recordLow + " - " + raptureIndexData.lowDate
         document.getElementById('rankChange').innerHTML = raptureIndexData.netChange

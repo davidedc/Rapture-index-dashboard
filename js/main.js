@@ -30,7 +30,7 @@ numPages++;
 setInterval(function() {
   var switchDivs;
   switchDivs = function() {
-    var generatedList, i, j, perc, ref, whichEntry;
+    var calculatedPerc, generatedList, i, j, ref, whichEntry;
     console.log(state + " " + state % numPages);
     document.getElementById('mainIndexNumber').style.display = 'none';
     document.getElementById('indexWithBar').style.display = 'none';
@@ -41,11 +41,43 @@ setInterval(function() {
       document.getElementById('splashImage').style.display = 'block';
     } else if (state % numPages === 1) {
       document.getElementById('mainIndexNumber').style.display = 'block';
+      jQuery({
+        animatedValue: 0
+      }).animate({
+        animatedValue: raptureIndexData.raptureIndexValue
+      }, {
+        duration: 800,
+        easing: 'swing',
+        step: function() {
+          return document.getElementById('indexNumber').innerHTML = Math.floor(this.animatedValue);
+        }
+      });
     } else if (state % numPages === 2) {
       document.getElementById('indexWithBar').style.display = 'block';
-      perc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow);
-      document.getElementById('topOfIndicatorBar').style.minHeight = (100 - perc) + "%";
-      document.getElementById('bottomOfIndicatorBar').style.minHeight = perc + "%";
+      calculatedPerc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow);
+      jQuery({
+        perc: 0
+      }).animate({
+        perc: calculatedPerc
+      }, {
+        duration: 800,
+        easing: 'swing',
+        step: function() {
+          document.getElementById('topOfIndicatorBar').style.minHeight = (100 - this.perc) + "%";
+          return document.getElementById('bottomOfIndicatorBar').style.minHeight = this.perc + "%";
+        }
+      });
+      jQuery({
+        animatedValue: 0
+      }).animate({
+        animatedValue: raptureIndexData.raptureIndexValue
+      }, {
+        duration: 800,
+        easing: 'swing',
+        step: function() {
+          return document.getElementById('currentIndexValueNextToBar').innerHTML = Math.floor(this.animatedValue);
+        }
+      });
     } else if (state % numPages === 3) {
       document.getElementById('breakdown').style.display = 'block';
       generatedList = "\n<ul class=\"leaders\">";
@@ -83,8 +115,6 @@ loadRaptureIndexData = function(APIendpointURL) {
     if (xmlhttp.readyState === XMLHttpRequest.DONE) {
       if (xmlhttp.status === 200) {
         raptureIndexData = JSON.parse(xmlhttp.responseText);
-        document.getElementById('indexNumber').innerHTML = raptureIndexData.raptureIndexValue;
-        document.getElementById('currentIndexValueNextToBar').innerHTML = raptureIndexData.raptureIndexValue;
         document.getElementById('highMark').innerHTML = "<b>High:</b> " + raptureIndexData.recordHigh + " - " + raptureIndexData.highDate;
         document.getElementById('lowMark').innerHTML = "<b>Low:</b> " + raptureIndexData.recordLow + " - " + raptureIndexData.lowDate;
         document.getElementById('rankChange').innerHTML = raptureIndexData.netChange;
