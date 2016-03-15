@@ -1,11 +1,4 @@
 
-STATE_LOADING = 0
-STATE_SHOWING_PAGE = 1
-
-ANIM_STATE_IN = 0
-ANIM_STATE_NONE = 1
-ANIM_STATE_OUT = 2
-
 numPages = 4
 carouselInterval = 6000
 
@@ -20,7 +13,6 @@ $('#animator').on 'mouseout', ->
 
 numPages--
 state = -1
-animState = ANIM_STATE_IN
 
 startCarousel = ->
 	setInterval () ->
