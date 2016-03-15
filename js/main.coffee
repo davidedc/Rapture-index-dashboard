@@ -7,6 +7,7 @@ ANIM_STATE_NONE = 1
 ANIM_STATE_OUT = 2
 
 numPages = 4
+carouselInterval = 6000
 
 raptureIndexData = {}
 
@@ -102,7 +103,7 @@ startCarousel = ->
 
 
 		
-	, 2000
+	, carouselInterval
 
 
 loadRaptureIndexData = (APIendpointURL) ->
