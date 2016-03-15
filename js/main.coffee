@@ -1,3 +1,11 @@
+
+STATE_LOADING = 0
+STATE_SHOWING_PAGE = 1
+
+ANIM_STATE_IN = 0
+ANIM_STATE_NONE = 1
+ANIM_STATE_OUT = 2
+
 numPages = 4
 
 
@@ -5,34 +13,61 @@ $('#animator').on 'mouseover', ->
   $('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
 
 $('#animator').on 'mouseout', ->
-  $('.perspectiveAnimatable').addClass('rightRotate').removeClass 'leftRotate'
+  
 
 
 state = -1
+animState = ANIM_STATE_IN
+
 numPages++
 setInterval () ->
+
+	switchDivs = ->
+		console.log state + " " + state % numPages
+
+		document.getElementById('mainIndexNumber').style.display = 'none';
+		document.getElementById('indexWithBar').style.display = 'none';
+		document.getElementById('splashImage').style.display = 'none';
+		document.getElementById('breakdown').style.display = 'none';
+		document.getElementById('breakdownDetail').style.display = 'none';
+
+		if state % numPages == 0
+			document.getElementById('splashImage').style.display = 'block';
+			#document.getElementById('splashImage').style.opacity = '0';
+
+		else if state % numPages == 1
+			document.getElementById('mainIndexNumber').style.display = 'block';
+			#document.getElementById('mainIndexNumber').style.opacity = '0';
+
+		else if state % numPages == 2
+			document.getElementById('indexWithBar').style.display = 'block';
+			#document.getElementById('indexWithBar').style.opacity = '0';
+
+		else if state % numPages == 3
+			document.getElementById('breakdown').style.display = 'block';
+			#document.getElementById('breakdown').style.opacity = '0';
+
+		else if state % numPages == 4
+			document.getElementById('breakdownDetail').style.display = 'block';
+			#document.getElementById('breakdownDetail').style.opacity = '0';
+
+		# in
+		setTimeout () ->
+			$('.perspectiveAnimatable').addClass('rightRotate').removeClass 'leftRotate'
+			,1
+		# out
+		#$('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
+
+
 	state++
+
+	# in
+	#$('.perspectiveAnimatable').addClass('rightRotate').removeClass 'leftRotate'
+	# out
+	$('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
+	setTimeout switchDivs, 800
 	
-	document.getElementById('mainIndexNumber').style.display = 'none';
-	document.getElementById('indexWithBar').style.display = 'none';
-	document.getElementById('splashImage').style.display = 'none';
-	document.getElementById('breakdown').style.display = 'none';
-	document.getElementById('breakdownDetail').style.display = 'none';
 
-	if state % numPages == 0
-		document.getElementById('splashImage').style.display = 'block';
-
-	else if state % numPages == 1
-		document.getElementById('mainIndexNumber').style.display = 'block';
-
-	else if state % numPages == 2
-		document.getElementById('indexWithBar').style.display = 'block';
-
-	else if state % numPages == 3
-		document.getElementById('breakdown').style.display = 'block';
-
-	else if state % numPages == 4
-		document.getElementById('breakdownDetail').style.display = 'block';
 
 
 	
@@ -51,7 +86,7 @@ loadRaptureIndexData = (APIendpointURL) ->
   xmlhttp.onreadystatechange = ->
     if xmlhttp.readyState == XMLHttpRequest.DONE
       if xmlhttp.status == 200
-        alert xmlhttp.responseText
+        console.log xmlhttp.responseText
       else if xmlhttp.status == 400
         alert 'There was an error 400'
       else
