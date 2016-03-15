@@ -1,5 +1,13 @@
 numPages = 4
 
+
+$('#animator').on 'mouseover', ->
+  $('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
+
+$('#animator').on 'mouseout', ->
+  $('.perspectiveAnimatable').addClass('rightRotate').removeClass 'leftRotate'
+
+
 state = -1
 numPages++
 setInterval () ->
