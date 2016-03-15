@@ -21,85 +21,82 @@ $('#animator').on 'mouseout', ->
 state = -1
 animState = ANIM_STATE_IN
 
-numPages++
-setInterval () ->
+startCarousel = ->
+	setInterval () ->
 
-	switchDivs = ->
-		console.log state + " " + state % numPages
+		switchDivs = ->
+			console.log state + " " + state % numPages
 
-		document.getElementById('mainIndexNumber').style.display = 'none'
-		document.getElementById('indexWithBar').style.display = 'none'
-		document.getElementById('splashImage').style.display = 'none'
-		document.getElementById('breakdown').style.display = 'none'
-		document.getElementById('breakdownDetail').style.display = 'none'
+			document.getElementById('mainIndexNumber').style.display = 'none'
+			document.getElementById('indexWithBar').style.display = 'none'
+			document.getElementById('splashImage').style.display = 'none'
+			document.getElementById('breakdown').style.display = 'none'
+			document.getElementById('breakdownDetail').style.display = 'none'
 
-		if state % numPages == 0
-			document.getElementById('splashImage').style.display = 'block'
+			if state % numPages == 0
+				document.getElementById('mainIndexNumber').style.display = 'block'
+				jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
+					duration: 800
+					easing: 'swing'
+					step: ->
+	        			document.getElementById('indexNumber').innerHTML = Math.floor @animatedValue
 
-		else if state % numPages == 1
-			document.getElementById('mainIndexNumber').style.display = 'block'
-			jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
-				duration: 800
-				easing: 'swing'
-				step: ->
-        			document.getElementById('indexNumber').innerHTML = Math.floor @animatedValue
+			else if state % numPages == 1
+				document.getElementById('indexWithBar').style.display = 'block'
+				calculatedPerc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow)
 
-		else if state % numPages == 2
-			document.getElementById('indexWithBar').style.display = 'block'
-			calculatedPerc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow)
+				jQuery(perc: 0).animate { perc: calculatedPerc },
+					duration: 800
+					easing: 'swing'
+					step: ->
+						document.getElementById('topOfIndicatorBar').style.minHeight = (100-@perc) + "%"
+						document.getElementById('bottomOfIndicatorBar').style.minHeight = (@perc) + "%"
 
-			jQuery(perc: 0).animate { perc: calculatedPerc },
-				duration: 800
-				easing: 'swing'
-				step: ->
-					document.getElementById('topOfIndicatorBar').style.minHeight = (100-@perc) + "%"
-					document.getElementById('bottomOfIndicatorBar').style.minHeight = (@perc) + "%"
-
-			jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
-				duration: 800
-				easing: 'swing'
-				step: ->
-        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.floor @animatedValue
+				jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
+					duration: 800
+					easing: 'swing'
+					step: ->
+	        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.floor @animatedValue
 
 
-		else if state % numPages == 3
-			document.getElementById('breakdown').style.display = 'block'
-			generatedList = """
+			else if state % numPages == 2
+				document.getElementById('breakdown').style.display = 'block'
+				generatedList = """
 
-                          <ul class="leaders">
-            """
+	                          <ul class="leaders">
+	            """
 
-			for i in [1...raptureIndexData.indexCategories.length/2]
-				generatedList += "<li><span>" + raptureIndexData.indexCategories[i] + "</span> <span>" + raptureIndexData.categoryValues[i] + "</span></li>"
+				for i in [1...raptureIndexData.indexCategories.length/2]
+					generatedList += "<li><span>" + raptureIndexData.indexCategories[i] + "</span> <span>" + raptureIndexData.categoryValues[i] + "</span></li>"
 
-			generatedList += "                          </ul>"
-			document.getElementById('brokenDownList').innerHTML = generatedList
+				generatedList += "                          </ul>"
+				document.getElementById('brokenDownList').innerHTML = generatedList
 
-		else if state % numPages == 4
-			document.getElementById('breakdownDetail').style.display = 'block'
-			whichEntry = Math.floor(Math.random() * (raptureIndexData.indexCategories.length - 1)) + 0
-			document.getElementById('breakDownHeader').innerHTML = raptureIndexData.indexCategories[whichEntry]
-			document.getElementById('breakDownValue').innerHTML = raptureIndexData.categoryValues[whichEntry]
-			document.getElementById('breakDownComment').innerHTML = categoryDescription[whichEntry]
-			
+			else if state % numPages == 3
+				document.getElementById('breakdownDetail').style.display = 'block'
+				whichEntry = Math.floor(Math.random() * (raptureIndexData.indexCategories.length - 1)) + 0
+				document.getElementById('breakDownHeader').innerHTML = raptureIndexData.indexCategories[whichEntry]
+				document.getElementById('breakDownValue').innerHTML = raptureIndexData.categoryValues[whichEntry]
+				document.getElementById('breakDownComment').innerHTML = categoryDescription[whichEntry]
+				
 
-		# in
-		setTimeout () ->
-			$('.perspectiveAnimatable').addClass('rightRotate').removeClass 'leftRotate'
-			,1
+			# in
+			setTimeout () ->
+				$('.perspectiveAnimatable').addClass('rightRotate').removeClass 'leftRotate'
+				,1
 
 
-	state++
+		state++
 
-	# out
-	$('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
-	setTimeout switchDivs, 800
-	
+		# out
+		$('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
+		setTimeout switchDivs, 800
+		
 
 
 
-	
-, 2000
+		
+	, 2000
 
 
 loadRaptureIndexData = (APIendpointURL) ->
@@ -114,6 +111,7 @@ loadRaptureIndexData = (APIendpointURL) ->
   xmlhttp.onreadystatechange = ->
     if xmlhttp.readyState == XMLHttpRequest.DONE
       if xmlhttp.status == 200
+        startCarousel()
         raptureIndexData = JSON.parse xmlhttp.responseText
 
         document.getElementById('highMark').innerHTML = "<b>High:</b> "+ raptureIndexData.recordHigh + " - " + raptureIndexData.highDate
@@ -147,7 +145,6 @@ loadRaptureIndexData = (APIendpointURL) ->
           # Change the content
           i++
 
-        debugger
       else if xmlhttp.status == 400
         alert 'There was an error 400'
       else
