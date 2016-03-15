@@ -7,11 +7,15 @@ carouselInterval = 6000;
 
 raptureIndexData = {};
 
-$('#animator').on('mouseover', function() {
-  return $('.perspectiveAnimatable').addClass('leftRotate').removeClass('rightRotate');
-});
+document.getElementById('splashImage').style.display = 'block';
 
-$('#animator').on('mouseout', function() {});
+document.getElementById('mainIndexNumber').style.display = 'none';
+
+document.getElementById('indexWithBar').style.display = 'none';
+
+document.getElementById('breakdown').style.display = 'none';
+
+document.getElementById('breakdownDetail').style.display = 'none';
 
 numPages--;
 

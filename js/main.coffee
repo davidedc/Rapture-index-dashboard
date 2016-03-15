@@ -5,10 +5,12 @@ carouselInterval = 6000
 raptureIndexData = {}
 
 
-$('#animator').on 'mouseover', ->
-  $('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
-
-$('#animator').on 'mouseout', ->
+# start by only showing the splash image and nothing else
+document.getElementById('splashImage').style.display = 'block'
+document.getElementById('mainIndexNumber').style.display = 'none'
+document.getElementById('indexWithBar').style.display = 'none'
+document.getElementById('breakdown').style.display = 'none'
+document.getElementById('breakdownDetail').style.display = 'none'
   
 
 numPages--
