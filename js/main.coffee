@@ -17,7 +17,7 @@ $('#animator').on 'mouseover', ->
 $('#animator').on 'mouseout', ->
   
 
-
+numPages--
 state = -1
 animState = ANIM_STATE_IN
 
@@ -34,45 +34,51 @@ startCarousel = ->
 			document.getElementById('breakdownDetail').style.display = 'none'
 
 			if state % numPages == 0
-				document.getElementById('mainIndexNumber').style.display = 'block'
-				jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
-					duration: 800
-					easing: 'swing'
-					step: ->
-	        			document.getElementById('indexNumber').innerHTML = Math.floor @animatedValue
+				if Math.floor(Math.random() * 2) == 0
+					document.getElementById('mainIndexNumber').style.display = 'block'
+					jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
+						duration: 800
+						easing: 'swing'
+						step: ->
+		        			document.getElementById('indexNumber').innerHTML = Math.floor @animatedValue
+				else
+					document.getElementById('indexWithBar').style.display = 'block'
+					calculatedPerc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow)
+
+					jQuery(perc: 0).animate { perc: calculatedPerc },
+						duration: 800
+						easing: 'swing'
+						step: ->
+							document.getElementById('topOfIndicatorBar').style.minHeight = (100-@perc) + "%"
+							document.getElementById('bottomOfIndicatorBar').style.minHeight = (@perc) + "%"
+
+					jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
+						duration: 800
+						easing: 'swing'
+						step: ->
+		        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.floor @animatedValue
 
 			else if state % numPages == 1
-				document.getElementById('indexWithBar').style.display = 'block'
-				calculatedPerc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow)
-
-				jQuery(perc: 0).animate { perc: calculatedPerc },
-					duration: 800
-					easing: 'swing'
-					step: ->
-						document.getElementById('topOfIndicatorBar').style.minHeight = (100-@perc) + "%"
-						document.getElementById('bottomOfIndicatorBar').style.minHeight = (@perc) + "%"
-
-				jQuery(animatedValue: 0).animate { animatedValue: raptureIndexData.raptureIndexValue },
-					duration: 800
-					easing: 'swing'
-					step: ->
-	        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.floor @animatedValue
-
-
-			else if state % numPages == 2
 				document.getElementById('breakdown').style.display = 'block'
 				generatedList = """
 
 	                          <ul class="leaders">
 	            """
 
-				for i in [1...raptureIndexData.indexCategories.length/2]
+				if Math.floor(Math.random() * 2) == 0
+					lowRange = 0
+					highRange = Math.floor raptureIndexData.indexCategories.length/2
+				else
+					lowRange = Math.floor raptureIndexData.indexCategories.length/2
+					highRange = raptureIndexData.indexCategories.length
+
+				for i in [lowRange ... highRange]
 					generatedList += "<li><span>" + raptureIndexData.indexCategories[i] + "</span> <span>" + raptureIndexData.categoryValues[i] + "</span></li>"
 
 				generatedList += "                          </ul>"
 				document.getElementById('brokenDownList').innerHTML = generatedList
 
-			else if state % numPages == 3
+			else if state % numPages == 2
 				document.getElementById('breakdownDetail').style.display = 'block'
 				whichEntry = Math.floor(Math.random() * (raptureIndexData.indexCategories.length - 1)) + 0
 				document.getElementById('breakDownHeader').innerHTML = raptureIndexData.indexCategories[whichEntry]
