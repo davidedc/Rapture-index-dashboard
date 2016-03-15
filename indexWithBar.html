@@ -9,7 +9,7 @@
         }
 
         #wrapper {
-            min-height: 100%;
+            height:100vh;
             background-color: #FF9800;
         }
 
@@ -27,10 +27,6 @@
             border-color:white;
         }
 
-        div.centerContentVertically {
-            position: relative; top: 50%;
-            transform: translateY(-50%);
-        }
 
     @media all and (min-width: 400px) {  #leftHeader  {   font-size:1.6em;  } }
     @media all and (min-width: 400px) {  #rightHeader  {   font-size:1.5em;  } }
@@ -39,21 +35,31 @@
     @media all and (min-width: 300px) {  div.highAndLowMarks  {   font-size:1.3em;  } }
     @media all and (min-width: 600px) {  div.highAndLowMarks  {   font-size:2.0em;  } }
 
-    @media all and (min-width: 300px) and ( min-height: 200px ) {  #currentIndexValue  {   font-size:6.5em;  } }
-    @media all and (min-width: 300px) and ( min-height: 700px ) {  #currentIndexValue  {   font-size:6.5em;  } }
-    @media all and (min-width: 600px) and ( min-height: 200px ) {  #currentIndexValue  {   font-size:8.5em;  } }
-    @media all and (min-width: 600px) and ( min-height: 700px ) {  #currentIndexValue  {   font-size:8.5em;  } }
+    @media all and (min-width: 300px) and ( min-height: 200px ) {  #currentIndexValueNextToBar  {   font-size:6.5em;  } }
+    @media all and (min-width: 300px) and ( min-height: 700px ) {  #currentIndexValueNextToBar  {   font-size:6.5em;  } }
+    @media all and (min-width: 600px) and ( min-height: 200px ) {  #currentIndexValueNextToBar  {   font-size:8.5em;  } }
+    @media all and (min-width: 600px) and ( min-height: 700px ) {  #currentIndexValueNextToBar  {   font-size:8.5em;  } }
 
 
+    /* ipad mini portrait */
     @media only screen 
-    and (min-device-width : 768px) 
-    and (max-device-width : 1024px) 
-    and (orientation : portrait)
-    and (-webkit-min-device-pixel-ratio: 1)  {
-        #leftHeader  {   font-size:3em;  }
-        #rightHeader  {   font-size:2em;  }
-        #rankChange  {   font-size:4.0em;  } 
+        and (min-device-width : 768px) 
+        and (max-device-width : 1024px) 
+        and (orientation : portrait)
+        and (-webkit-min-device-pixel-ratio: 1)  {
+
+        #leftHeader  {   font-size:2.5em;  }
+        #rightHeader  {   font-size:2.5em;  }
+
     }
+
+    /* surface portrait */
+    @media only screen and (min-width: 800px) and (orientation : portrait) {
+        #currentIndexValueNextToBar  {   font-size:11.5em;  }
+        #leftHeader  {   font-size:3em;  }
+        #rightHeader  {   font-size:3em;  }
+    }
+
 
     </style>
 </head>
@@ -61,82 +67,82 @@
 <body>
     <div id="wrapper">
 
-        <div id="leftColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
-        </div>
-        <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
-            <div id="topMargin" class="showBorders" style="min-height: 7%; width: 100%;">
+        <div id="indexWithBar">
+            <div id="leftColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
             </div>
-            <div id="middle" class="lowerWhiteBorder" style="min-height: 87%; width: 100%;">
-
-                <div id="header" class="showBorders" style="min-height: 5%; width: 100%;">
-
-                    <div id="leftHeader" class="showBorders" style="padding-left: 1%; height: 5%; width: 49%; white-space: nowrap; overflow: hidden;float: left; background-color: #FFFFFF; font-family: Arial; color: #FF9800; border-style:none none solid none; border-color:white;">
-                        <div class="showBorders centerContentVertically" style="">Rapture index</div>
-                    </div>
-
-                    <div id="rightHeader" class="lowerWhiteBorder" style="height: 5%; width: 50%; white-space: nowrap; overflow: hidden;float: left; font-family: Arial; color: #FFFFFF; font-weight: bold;">
-                        <div class="showBorders centerContentVertically" style="text-align: right;">12 Mar 2016</div>
-                    </div>
-
+            <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
+                <div id="topMargin" class="showBorders" style="min-height: 7%; width: 100%;">
                 </div>
+                <div id="middle" class="lowerWhiteBorder" style="min-height: 87%; width: 100%;">
 
+                    <div id="header" class="showBorders" style="min-height: 5%; width: 100%;">
 
-                <div id="leftColumn" class="showBorders" style="height: 100%; width: 10%; white-space: nowrap; overflow: hidden;float: left;">
-                </div>
-                <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
-
-                        <div id="bigCenterCell" class="showBorders" style="min-height: 80%; width: 100%;">
-                            <div id="bigCellTopMargin" class="showBorders" style="min-height: 10%; width: 100%;">
-                            </div>
-                            <div class="showBorders" style="min-height: 55%; width: 100%; text-align: center; font-family: Arial; color: #FFFFFF;">
-
-                                <div id="leftColumn" class="allWhiteBorder" style="height: 55%; width: 20%; white-space: nowrap; overflow: hidden;float: left;">
-
-                                    <!-- here are the percentages in the verticals to be tweaked -->
-                                    <div id="bigCellTopMargin" class="showBorders" style="min-height: 10%; width: 90%;">
-                                    </div>
-                                    <div class="showBorders" style="min-height: 90%; width: 100%; text-align: center; font-family: Arial; background-color: #FFFFFF;">
-                                    </div>
-
-                                </div>
-
-                                <div id="gapBetweenBarAndWrites" class="showBorders" style="height: 55%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
-                                </div>
-
-                                <div id="rightColumn" class="showBorders" style="height: 55%; width: 70%; white-space: nowrap; overflow: hidden;float: left;position: relative; text-align: center;">
-
-                                    <div id="highMark" class="showBorders highAndLowMarks" style="position: absolute; top: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
-                                    <b>High:</b> 58-12 dec 1993
-                                    </div>
-
-                                    <div id="currentIndexValue" class="showBorders centerContentVertically" style="width: 100%; font-family: Arial; color: #FFFFFF;">
-                                    129
-                                    </div>
-                                    
-
-                                    <div id="lowMark" class="showBorders highAndLowMarks" style="position: absolute; bottom: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
-                                    <b>Low:</b> 58-12 dec 1993
-                                    </div>
-
-                                </div>
-
-                            </div>
-
+                        <div id="leftHeader" class="showBorders" style="padding-left: 1%; height: 5%; width: 49%; white-space: nowrap; overflow: hidden;float: left; background-color: #FFFFFF; font-family: Arial; color: #FF9800; border-style:none none solid none; border-color:white; ">
+                            <div class="showBorders" style="vertical-align: middle; margin-top: 3px;">Rapture index</div>
                         </div>
 
+                        <div id="rightHeader" class="lowerWhiteBorder" style="height: 5%; width: 50%; white-space: nowrap; overflow: hidden;float: left; font-family: Arial; color: #FFFFFF; font-weight: bold;">
+                            <div class="showBorders" style="text-align: right; vertical-align: middle; margin-top: 3px;">12 Mar 2016</div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="leftColumn" class="showBorders" style="height: 100%; width: 10%; white-space: nowrap; overflow: hidden;float: left;">
+                    </div>
+                    <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
+
+                            <div id="bigCenterCell" class="showBorders" style="min-height: 80%; width: 100%;">
+                                <div id="bigCellTopMargin" class="showBorders" style="min-height: 10%; width: 100%;">
+                                </div>
+                                <div class="showBorders" style="min-height: 55%; width: 100%; text-align: center; font-family: Arial; color: #FFFFFF;">
+
+                                    <div id="leftColumn" class="allWhiteBorder" style="height: 55%; width: 20%; white-space: nowrap; overflow: hidden;float: left;">
+
+                                        <!-- here are the percentages in the verticals to be tweaked -->
+                                        <div id="bigCellTopMargin" class="showBorders" style="min-height: 10%; width: 90%;">
+                                        </div>
+                                        <div class="showBorders" style="min-height: 90%; width: 100%; text-align: center; font-family: Arial; background-color: #FFFFFF;">
+                                        </div>
+
+                                    </div>
+
+                                    <div id="gapBetweenBarAndWrites" class="showBorders" style="height: 55%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+                                    </div>
+
+                                    <div id="rightColumn" class="showBorders" style="height: 55%; width: 70%; white-space: nowrap; overflow: hidden;float: left;position: relative; text-align: center;">
+
+                                        <div id="highMark" class="showBorders highAndLowMarks" style="width: 100%; height: 35%; font-family: Arial; color: #FFFFFF;">
+                                        <b>High:</b> 58-12 dec 1993
+                                        </div>
+
+                                        <div id="currentIndexValueNextToBar" class="showBorders" style="width: 100%; font-family: Arial; color: #FFFFFF;">
+                                        129
+                                        </div>
+                                        
+
+                                        <div id="lowMark" class="showBorders highAndLowMarks" style="position: absolute; bottom: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
+                                        <b>Low:</b> 58-12 dec 1993
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                    </div>
+
+                    <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+                    </div>
+
+
                 </div>
-
-                <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
-                </div>
-
-
+            </div>
+            <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
             </div>
         </div>
-        <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
-        </div>
 
-<!--
--->
         
     </div>
 </body>

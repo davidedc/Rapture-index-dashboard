@@ -1,0 +1,389 @@
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.01,minimal-ui">
+    <style type="text/css">
+      html, body {
+          margin: 0;
+      }
+
+      #wrapper {
+          height:100vh;
+          background-color: #ffba00;
+      }
+
+      div.showBorders {
+          //border-style: dotted;
+      }
+
+      div.lowerWhiteBorder {
+          border-style:none none solid none;
+          border-color:white;
+      }
+
+      div.allWhiteBorder {
+          border-style:solid;
+          border-color:white;
+      }
+
+      @media all and (min-width: 400px) {  #leftHeader  {   font-size:1.6em;  } }
+      @media all and (min-width: 400px) {  div.rightHeader  {   font-size:1.5em;  } }
+
+      @media all and (min-width: 400px) and ( min-height: 200px ) {
+          #indexNumber  {   font-size:14.3em;  }
+          #rankChange  {   font-size:4em;  }
+      }
+
+      /* ----------------------------------- */
+      @media all and (min-width: 300px) {  div.highAndLowMarks  {   font-size:1.3em;  } }
+      @media all and (min-width: 600px) {  div.highAndLowMarks  {   font-size:2.0em;  } }
+
+      @media all and (min-width: 300px) and ( min-height: 200px ) {  #currentIndexValueNextToBar  {   font-size:6.5em;  } }
+      @media all and (min-width: 300px) and ( min-height: 700px ) {  #currentIndexValueNextToBar  {   font-size:6.5em;  } }
+      @media all and (min-width: 600px) and ( min-height: 200px ) {  #currentIndexValueNextToBar  {   font-size:8.5em;  } }
+      @media all and (min-width: 600px) and ( min-height: 700px ) {  #currentIndexValueNextToBar  {   font-size:8.5em;  } }
+      /* ----------------------------------- */
+      @media all and (min-width: 400px) and ( min-height: 200px ) {  #brokenDownList  {   font-size:1.1em;  } }
+      @media all and (min-width: 400px) and ( min-height: 700px ) {  #brokenDownList  {   font-size:1.1em;  } }
+
+      ul.leaders {
+          max-width: 40em;
+          padding: 0;
+          overflow-x: hidden;
+          list-style: none
+      }
+
+      ul.leaders li:before {
+          float: left;
+          width: 0;
+          white-space: nowrap;
+          content:
+          ". . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . "
+      }
+
+      ul.leaders span:first-child {
+          padding-right: 0.33em;
+          background: #ffba00
+      }
+
+      ul.leaders span + span {
+          float: right;
+          padding-left: 0.33em;
+          background: #ffba00
+      }
+
+      /* ----------------------------------- */
+      @media all and (min-width: 400px) and ( min-height: 200px ) {  #breakDownHeader  {   font-size:3em;  } }
+      @media all and (min-width: 400px) and ( min-height: 700px ) {  #breakDownHeader  {   font-size:4em;  } }
+
+      @media all and (min-width: 400px) and ( min-height: 200px ) {  #breakDownValue  {   font-size:7em;  } }
+      @media all and (min-width: 400px) and ( min-height: 700px ) {  #breakDownValue  {   font-size:7em;  } }
+
+      @media all and (min-width: 400px) {  #breakDownComment  {   font-size:1.3em;  } }
+      /* ----------------------------------- */
+
+
+      /* ipad mini portrait */
+      @media only screen 
+          and (min-device-width : 768px) 
+          and (max-device-width : 1024px) 
+          and (orientation : portrait)
+          and (-webkit-min-device-pixel-ratio: 1)  {
+
+          #leftHeader  {   font-size:2.5em;  }
+          div.rightHeader  {   font-size:2.5em;  }
+          #indexNumber  {   font-size:20em;  }
+          #rankChange  {   font-size:4.0em;  } 
+          #brokenDownList  {   font-size:1.7em;  }
+          #breakDownHeader  {   font-size:3.5em;  }
+
+      }
+
+      /* surface portrait */
+      @media only screen and (min-width: 800px) and (orientation : portrait) {
+          #leftHeader  {   font-size:3em;  }
+          div.rightHeader  {   font-size:3em;  }
+          #indexNumber  {   font-size:27.3em;  }
+          #rankChange  {   font-size:9em;  }
+          #currentIndexValueNextToBar  {   font-size:11.5em;  }
+          #brokenDownList  {   font-size:2.2em;  }
+          #breakDownHeader  {   font-size:5em;  }
+          #breakDownValue  {   font-size:8em;  }
+          #breakDownComment  {   font-size:2.0em;  }
+      }
+
+
+      /* 3d animation and fade */
+
+
+      .leftRotate{
+        opacity:0;
+        -webkit-transform: rotateY(-90deg);
+      }
+
+      .rightRotate{
+        -webkit-transform: translate3d(0,0,0) rotateY(0deg);   
+        opacity:1;
+      }
+
+
+      .perspectiveAnimatable { 
+        -webkit-transform-origin-x: 100px;
+        -webkit-transition: 300ms 0ms;
+      }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <!-- --------------------------- splash screen -------------------------------- -->
+
+        <div id="splashImage" class="perspectiveAnimatable">
+            <img src="./images/splashPagePic.png" alt="Smiley face" style="padding-top: 10vh; max-height: 90vh; max-width: 100%">
+        </div>
+
+        <!-- --------------------------- main index number -------------------------------- -->
+
+        <div id="mainIndexNumber" class="perspectiveAnimatable">
+            <div id="leftColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+            </div>
+            <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
+                <div id="topMargin" class="showBorders" style="min-height: 7%; width: 100%;">
+                </div>
+                <div id="middle" class="lowerWhiteBorder" style="min-height: 87%; width: 100%;">
+
+                    <div id="header" class="showBorders" style="min-height: 5%; width: 100%;">
+
+                        <div id="leftHeader" class="showBorders" style="padding-left: 1%; height: 5%; width: 49%; white-space: nowrap; overflow: hidden;float: left; background-color: #FFFFFF; font-family: Arial; color: #ffba00; border-style:none none solid none; border-color:white; ">
+                            <div class="showBorders" style="vertical-align: middle; margin-top: 3px;">Rapture index</div>
+                        </div>
+
+                        <div class="lowerWhiteBorder rightHeader" style="height: 5%; width: 50%; white-space: nowrap; overflow: hidden;float: left; font-family: Arial; color: #FFFFFF; font-weight: bold;">
+                            <div class="showBorders rightHeaderContent" style="text-align: right; vertical-align: middle; margin-top: 3px;">12 Mar 2016</div>
+                        </div>
+
+                    </div>
+                    <div id="bigCenterCell" class="showBorders" style="min-height: 80%; width: 100%;">
+                        <div id="bigCellTopMargin" class="showBorders" style="min-height: 17%; width: 100%;">
+                        </div>
+                        <div id="indexNumber" class="showBorders" style="min-height: 27%; width: 100%; text-align: center; font-family: Arial; color: #FFFFFF;">
+                        178
+                        </div>
+                        <div id="gapBetweenBigNumberAndRankChange" class="showBorders" style="min-height: 0%; width: 100%;">
+                        </div>
+                        <div id="rankChange" class="showBorders" style="min-height: 8%; width: 100%; text-align: center; font-family: Arial; color: #FFFFFF;">
+                        ▼ -1
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+            </div>
+        </div>
+
+        <!-- --------------------------- index with bar -------------------------------- -->
+
+        <div id="indexWithBar" class="perspectiveAnimatable">
+            <div id="leftColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+            </div>
+            <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
+                <div id="topMargin" class="showBorders" style="min-height: 7%; width: 100%;">
+                </div>
+                <div id="middle" class="lowerWhiteBorder" style="min-height: 87%; width: 100%;">
+
+                    <div id="header" class="showBorders" style="min-height: 5%; width: 100%;">
+
+                        <div id="leftHeader" class="showBorders" style="padding-left: 1%; height: 5%; width: 49%; white-space: nowrap; overflow: hidden;float: left; background-color: #FFFFFF; font-family: Arial; color: #ffba00; border-style:none none solid none; border-color:white; ">
+                            <div class="showBorders" style="vertical-align: middle; margin-top: 3px;">Rapture index</div>
+                        </div>
+
+                        <div class="lowerWhiteBorder rightHeader" style="height: 5%; width: 50%; white-space: nowrap; overflow: hidden;float: left; font-family: Arial; color: #FFFFFF; font-weight: bold;">
+                            <div class="showBorders rightHeaderContent" style="text-align: right; vertical-align: middle; margin-top: 3px;">12 Mar 2016</div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="leftColumn" class="showBorders" style="height: 100%; width: 10%; white-space: nowrap; overflow: hidden;float: left;">
+                    </div>
+                    <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
+
+                            <div id="bigCenterCell" class="showBorders" style="min-height: 80%; width: 100%;">
+                                <div id="bigCellTopMargin" class="showBorders" style="min-height: 10%; width: 100%;">
+                                </div>
+                                <div class="showBorders" style="min-height: 55%; width: 100%; text-align: center; font-family: Arial; color: #FFFFFF;">
+
+                                    <div id="leftColumn" class="allWhiteBorder" style="height: 55%; width: 20%; white-space: nowrap; overflow: hidden;float: left;">
+
+                                        <!-- here are the percentages in the verticals to be tweaked -->
+                                        <div id="topOfIndicatorBar" class="showBorders" style="min-height: 10%; width: 90%;">
+                                        </div>
+                                        <div id="bottomOfIndicatorBar" class="showBorders" style="min-height: 90%; width: 100%; text-align: center; font-family: Arial; background-color: #FFFFFF;">
+                                        </div>
+
+                                    </div>
+
+                                    <div id="gapBetweenBarAndWrites" class="showBorders" style="height: 55%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+                                    </div>
+
+                                    <div id="rightColumn" class="showBorders" style="height: 55%; width: 70%; white-space: nowrap; overflow: hidden;float: left;position: relative; text-align: center;">
+
+                                        <div id="highMark" class="showBorders highAndLowMarks" style="width: 100%; height: 35%; font-family: Arial; color: #FFFFFF;">
+                                        <b>High:</b> 58-12 dec 1993
+                                        </div>
+
+                                        <div id="currentIndexValueNextToBar" class="showBorders" style="width: 100%; font-family: Arial; color: #FFFFFF;">
+                                        129
+                                        </div>
+                                        
+
+                                        <div id="lowMark" class="showBorders highAndLowMarks" style="position: absolute; bottom: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
+                                        <b>Low:</b> 58-12 dec 1993
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                    </div>
+
+                    <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+            </div>
+        </div>        
+
+        <!-- --------------------------- breakdown -------------------------------- -->
+
+        <div id="breakdown" class="perspectiveAnimatable">
+          <!-- leftColumn -->
+          <div class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+          </div>
+          <!-- centerColumn -->
+          <div class="showBorders" style="height: 100%; width: 85%; white-space: nowrap; overflow: hidden;float: left;">
+              <!-- top margin -->
+              <div class="showBorders" style="min-height: 7%; width: 100%;">
+              </div>
+              <!-- middle -->
+              <div id="middle" class="lowerWhiteBorder" style="min-height: 87%; width: 100%;">
+
+                  <!-- header -->
+                  <div class="showBorders" style="min-height: 5%; width: 100%;">
+
+                      <div id="leftHeader" class="showBorders" style="padding-left: 1%; height: 5%; width: 49%; white-space: nowrap; overflow: hidden;float: left; background-color: #FFFFFF; font-family: Arial; color: #ffba00; border-style:none none solid none; border-color:white; ">
+                          <div class="showBorders" style="vertical-align: middle; margin-top: 3px;">Rapture index</div>
+                      </div>
+
+                      <div class="lowerWhiteBorder rightHeader" style="height: 5%; width: 50%; white-space: nowrap; overflow: hidden;float: left; font-family: Arial; color: #FFFFFF; font-weight: bold;">
+                          <div class="showBorders rightHeaderContent" style="text-align: right; vertical-align: middle; margin-top: 3px;">12 Mar 2016</div>
+                      </div>
+                  </div>
+
+                  <!-- big center cell -->
+                  <div class="showBorders" style="min-height: 80%; width: 100%;">
+                      <div id="bigCellTopMargin" class="showBorders" style="min-height: 2%; width: 100%;">
+                      </div>
+
+                      <div id="brokenDownList" class="showBorders" style="min-height: 27%; width: 100%; font-family: Arial; color: #FFFFFF;">
+
+                          <ul class="leaders">
+                           <li><span>False Christs</span> <span>0.95</span></li>
+                           <li><span>Occult</span> <span>8.95</span></li>
+                           <li><span>Satanism</span> <span>7.95</span></li>
+                           <li><span>Unemployment</span> <span>5.25</span></li>
+                           <li><span>Inflation</span> <span>10.95</span></li>
+                           <li><span>Interest Rates</span> <span>10.95</span></li>
+                           <li><span>The Economy</span> <span>10.95</span></li>
+                           <li><span>Oil Supply/Price</span> <span>10.95</span></li>
+                           <li><span>Debt & Trade</span> <span>10.95</span></li>
+                           <li><span>Financial unrest</span> <span>10.95</span></li>
+                           <li><span>Leadership</span> <span>10.95</span></li>
+                           <li><span>Drug abuse</span> <span>10.95</span></li>
+                           <li><span>Apostasy</span> <span>10.95</span></li>
+                           <li><span>Supernatural</span> <span>10.95</span></li>
+                           <li><span>Moral Standards</span> <span>10.95</span></li>
+                           <li><span>Anti-Christian</span> <span>10.95</span></li>
+                           <li><span>Crime Rate</span> <span>10.95</span></li>
+                           <li><span>Ecumenism</span> <span>10.95</span></li>
+                           <li><span>Globalism</span> <span>10.95</span></li>
+                           <li><span>Tribulation Temple</span> <span>10.95</span></li>
+                           <li><span>Anti-Semitism</span> <span>10.95</span></li>
+                           <li><span>Israel</span> <span>10.95</span></li>
+                          </ul>
+
+                      </div>
+
+                  </div>
+
+              </div>
+          </div>
+          <!-- right column -->
+          <div class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+          </div>
+        </div>
+
+        <!-- --------------------------- breakdown detail -------------------------------- -->
+
+        <div id="breakdownDetail" class="perspectiveAnimatable">
+            <div id="leftColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+            </div>
+            <div id="centerColumn" class="showBorders" style="height: 100%; width: 85%; overflow: hidden;float: left;">
+                <div id="topMargin" class="showBorders" style="min-height: 7%; width: 100%;">
+                </div>
+                <div id="middle" class="lowerWhiteBorder" style="min-height: 87%; width: 100%;">
+
+                    <div id="header" class="showBorders" style="min-height: 5%; width: 100%;">
+
+                        <div id="leftHeader" class="showBorders" style="padding-left: 1%; height: 5%; width: 49%; white-space: nowrap; overflow: hidden;float: left; background-color: #FFFFFF; font-family: Arial; color: #ffba00; border-style:none none solid none; border-color:white; ">
+                            <div class="showBorders" style="vertical-align: middle; margin-top: 3px;">Rapture index</div>
+                        </div>
+
+                        <div class="lowerWhiteBorder rightHeader" style="height: 5%; width: 50%; white-space: nowrap; overflow: hidden;float: left; font-family: Arial; color: #FFFFFF; font-weight: bold;">
+                            <div class="showBorders rightHeaderContent" style="text-align: right; vertical-align: middle; margin-top: 3px;">12 Mar 2016</div>
+                        </div>
+                    </div>
+
+                    <div id="bigCenterCell" class="showBorders" style="min-height: 80%; width: 100%;">
+                        <div id="bigCellTopMargin" class="showBorders" style="min-height: 15%; width: 100%;">
+                        </div>
+                        <div id="breakDownHeader" class="showBorders" style="width: 100%; font-family: Arial; color: #FFFFFF;">
+                        Beast Government:
+                        </div>
+                        <div id="breakDownValue" class="showBorders" style="min-height: 20%; width: 100%; font-family: Arial; color: #FFFFFF;">
+                        9
+                        </div>
+                        <div id="gapBetweenBigNumberAndRankChange" class="showBorders" style="min-height: 0%; width: 100%;">
+                        </div>
+
+                        <div class="showBorders" style="min-height: 32%; width: 100%; position: relative;">
+                            <div id="breakDownComment" class="showBorders" style="position: absolute; bottom: 0; width: 100%; font-family: Arial; color: #FFFFFF;">
+                            (Mat.24:24) Jesus talked about false Christs and false prophets. A false Christ is anyone who claims to be equal to or greater than God. The realization that an individual is placing himself in the role of deity is not always easy to discern.
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div id="rightColumn" class="showBorders" style="height: 100%; width: 5%; white-space: nowrap; overflow: hidden;float: left;">
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
