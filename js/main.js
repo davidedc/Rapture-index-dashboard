@@ -21,7 +21,7 @@ startCarousel = function() {
   return setInterval(function() {
     var switchDivs;
     switchDivs = function() {
-      var calculatedPerc, generatedList, highRange, i, j, lowRange, ref, ref1, whichEntry;
+      var calculatedPerc, generatedList, highRange, i, j, k, lowRange, otherComments, ref, ref1, ref2, whichEntry;
       console.log(state + " " + state % numPages);
       document.getElementById('mainIndexNumber').style.display = 'none';
       document.getElementById('indexWithBar').style.display = 'none';
@@ -89,7 +89,13 @@ startCarousel = function() {
         whichEntry = Math.floor(Math.random() * (raptureIndexData.indexCategories.length - 1)) + 0;
         document.getElementById('breakDownHeader').innerHTML = raptureIndexData.indexCategories[whichEntry];
         document.getElementById('breakDownValue').innerHTML = raptureIndexData.categoryValues[whichEntry];
-        document.getElementById('breakDownComment').innerHTML = categoryDescription[whichEntry];
+        otherComments = "";
+        for (i = k = 0, ref2 = raptureIndexData.notesHeadlinesNumbers.length; 0 <= ref2 ? k < ref2 : k > ref2; i = 0 <= ref2 ? ++k : --k) {
+          if (parseInt(raptureIndexData.notesHeadlinesNumbers[i], 10) === whichEntry + 1) {
+            otherComments = raptureIndexData.notesBodies[i] + "<br>" + "<br>";
+          }
+        }
+        document.getElementById('breakDownComment').innerHTML = otherComments + categoryDescription[whichEntry];
       }
       return setTimeout(function() {
         return $('.perspectiveAnimatable').addClass('rightRotate').removeClass('leftRotate', 1);
@@ -115,8 +121,8 @@ loadRaptureIndexData = function(APIendpointURL) {
       if (xmlhttp.status === 200) {
         startCarousel();
         raptureIndexData = JSON.parse(xmlhttp.responseText);
-        document.getElementById('highMark').innerHTML = "<b>High:</b> " + raptureIndexData.recordHigh + " - " + raptureIndexData.highDate;
-        document.getElementById('lowMark').innerHTML = "<b>Low:</b> " + raptureIndexData.recordLow + " - " + raptureIndexData.lowDate;
+        document.getElementById('highMark').innerHTML = "<b>High: " + raptureIndexData.recordHigh + "</b> - " + raptureIndexData.highDate;
+        document.getElementById('lowMark').innerHTML = "<b>Low: " + raptureIndexData.recordLow + "</b> - " + raptureIndexData.lowDate;
         if (raptureIndexData.netChange[0] === "+") {
           raptureIndexData.netChange = "▲ " + raptureIndexData.netChange;
         } else if (raptureIndexData.netChange[0] === "+") {

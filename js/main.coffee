@@ -76,7 +76,13 @@ startCarousel = ->
 				whichEntry = Math.floor(Math.random() * (raptureIndexData.indexCategories.length - 1)) + 0
 				document.getElementById('breakDownHeader').innerHTML = raptureIndexData.indexCategories[whichEntry]
 				document.getElementById('breakDownValue').innerHTML = raptureIndexData.categoryValues[whichEntry]
-				document.getElementById('breakDownComment').innerHTML = categoryDescription[whichEntry]
+
+				otherComments = ""
+				for i in [0...raptureIndexData.notesHeadlinesNumbers.length]
+					if parseInt(raptureIndexData.notesHeadlinesNumbers[i], 10) == whichEntry + 1
+						otherComments = raptureIndexData.notesBodies[i] + "<br>" + "<br>"
+
+				document.getElementById('breakDownComment').innerHTML = otherComments + categoryDescription[whichEntry]
 				
 
 			# in
@@ -113,8 +119,8 @@ loadRaptureIndexData = (APIendpointURL) ->
         startCarousel()
         raptureIndexData = JSON.parse xmlhttp.responseText
 
-        document.getElementById('highMark').innerHTML = "<b>High:</b> "+ raptureIndexData.recordHigh + " - " + raptureIndexData.highDate
-        document.getElementById('lowMark').innerHTML = "<b>Low:</b> "+ raptureIndexData.recordLow + " - " + raptureIndexData.lowDate
+        document.getElementById('highMark').innerHTML = "<b>High: "+ raptureIndexData.recordHigh + "</b> - " + raptureIndexData.highDate
+        document.getElementById('lowMark').innerHTML = "<b>Low: "+ raptureIndexData.recordLow + "</b> - " + raptureIndexData.lowDate
         if raptureIndexData.netChange[0] == "+"
         	raptureIndexData.netChange = "▲ " + raptureIndexData.netChange
         else if raptureIndexData.netChange[0] == "+"
