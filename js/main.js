@@ -127,6 +127,11 @@ loadRaptureIndexData = function(APIendpointURL) {
         raptureIndexData = JSON.parse(xmlhttp.responseText);
         document.getElementById('highMark').innerHTML = "<b>High:</b> " + raptureIndexData.recordHigh + " - " + raptureIndexData.highDate;
         document.getElementById('lowMark').innerHTML = "<b>Low:</b> " + raptureIndexData.recordLow + " - " + raptureIndexData.lowDate;
+        if (raptureIndexData.netChange[0] === "+") {
+          raptureIndexData.netChange = "▲ " + raptureIndexData.netChange;
+        } else if (raptureIndexData.netChange[0] === "+") {
+          raptureIndexData.netChange = "▼ " + raptureIndexData.netChange;
+        }
         document.getElementById('rankChange').innerHTML = raptureIndexData.netChange;
         monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         date = new Date;
