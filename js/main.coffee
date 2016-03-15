@@ -25,44 +25,35 @@ setInterval () ->
 	switchDivs = ->
 		console.log state + " " + state % numPages
 
-		document.getElementById('mainIndexNumber').style.display = 'none';
-		document.getElementById('indexWithBar').style.display = 'none';
-		document.getElementById('splashImage').style.display = 'none';
-		document.getElementById('breakdown').style.display = 'none';
-		document.getElementById('breakdownDetail').style.display = 'none';
+		document.getElementById('mainIndexNumber').style.display = 'none'
+		document.getElementById('indexWithBar').style.display = 'none'
+		document.getElementById('splashImage').style.display = 'none'
+		document.getElementById('breakdown').style.display = 'none'
+		document.getElementById('breakdownDetail').style.display = 'none'
 
 		if state % numPages == 0
-			document.getElementById('splashImage').style.display = 'block';
-			#document.getElementById('splashImage').style.opacity = '0';
+			document.getElementById('splashImage').style.display = 'block'
 
 		else if state % numPages == 1
-			document.getElementById('mainIndexNumber').style.display = 'block';
-			#document.getElementById('mainIndexNumber').style.opacity = '0';
+			document.getElementById('mainIndexNumber').style.display = 'block'
 
 		else if state % numPages == 2
-			document.getElementById('indexWithBar').style.display = 'block';
-			#document.getElementById('indexWithBar').style.opacity = '0';
+			document.getElementById('indexWithBar').style.display = 'block'
 
 		else if state % numPages == 3
-			document.getElementById('breakdown').style.display = 'block';
-			#document.getElementById('breakdown').style.opacity = '0';
+			document.getElementById('breakdown').style.display = 'block'
 
 		else if state % numPages == 4
-			document.getElementById('breakdownDetail').style.display = 'block';
-			#document.getElementById('breakdownDetail').style.opacity = '0';
+			document.getElementById('breakdownDetail').style.display = 'block'
 
 		# in
 		setTimeout () ->
 			$('.perspectiveAnimatable').addClass('rightRotate').removeClass 'leftRotate'
 			,1
-		# out
-		#$('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
 
 
 	state++
 
-	# in
-	#$('.perspectiveAnimatable').addClass('rightRotate').removeClass 'leftRotate'
 	# out
 	$('.perspectiveAnimatable').addClass('leftRotate').removeClass 'rightRotate'
 	setTimeout switchDivs, 800
