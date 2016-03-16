@@ -150,9 +150,17 @@ loadRaptureIndexData = function(APIendpointURL) {
           i++;
         }
       } else if (xmlhttp.status === 400) {
-        alert('There was an error 400');
+        if (!carouselIsOngoing) {
+          alert('There was an error 400');
+        } else {
+          console.log('There was an error 400');
+        }
       } else {
-        alert('something else other than 200 was returned: ' + xmlhttp.status);
+        if (!carouselIsOngoing) {
+          alert('something else other than 200 was returned: ' + xmlhttp.status);
+        } else {
+          console.log('something else other than 200 was returned: ' + xmlhttp.status);
+        }
       }
     }
   };
