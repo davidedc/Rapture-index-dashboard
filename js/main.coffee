@@ -35,7 +35,7 @@ startCarousel = ->
 						duration: 800
 						easing: 'swing'
 						step: ->
-		        			document.getElementById('indexNumber').innerHTML = Math.floor @animatedValue
+		        			document.getElementById('indexNumber').innerHTML = Math.round @animatedValue
 				else
 					document.getElementById('indexWithBar').style.display = 'block'
 					calculatedPerc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow)
@@ -51,7 +51,7 @@ startCarousel = ->
 						duration: 800
 						easing: 'swing'
 						step: ->
-		        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.floor @animatedValue
+		        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.round @animatedValue
 
 			else if state % numPages == 1
 				document.getElementById('breakdown').style.display = 'block'
