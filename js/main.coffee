@@ -15,8 +15,10 @@ document.getElementById('breakdownDetail').style.display = 'none'
 
 numPages--
 state = -1
+carouselIsOngoing = false
 
 startCarousel = ->
+	carouselIsOngoing = true
 	setInterval () ->
 
 		switchDivs = ->
@@ -35,7 +37,7 @@ startCarousel = ->
 						duration: 800
 						easing: 'swing'
 						step: ->
-		        			document.getElementById('indexNumber').innerHTML = Math.floor @animatedValue
+		        			document.getElementById('indexNumber').innerHTML = Math.round @animatedValue
 				else
 					document.getElementById('indexWithBar').style.display = 'block'
 					calculatedPerc = 100 * (raptureIndexData.raptureIndexValue - raptureIndexData.recordLow) / (raptureIndexData.recordHigh - raptureIndexData.recordLow)
@@ -51,7 +53,7 @@ startCarousel = ->
 						duration: 800
 						easing: 'swing'
 						step: ->
-		        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.floor @animatedValue
+		        			document.getElementById('currentIndexValueNextToBar').innerHTML = Math.round @animatedValue
 
 			else if state % numPages == 1
 				document.getElementById('breakdown').style.display = 'block'
@@ -118,7 +120,8 @@ loadRaptureIndexData = (APIendpointURL) ->
   xmlhttp.onreadystatechange = ->
     if xmlhttp.readyState == XMLHttpRequest.DONE
       if xmlhttp.status == 200
-        startCarousel()
+        if not carouselIsOngoing
+        	startCarousel()
         raptureIndexData = JSON.parse xmlhttp.responseText
 
         document.getElementById('highMark').innerHTML = "<b>High: "+ raptureIndexData.recordHigh + "</b> - " + raptureIndexData.highDate
@@ -166,7 +169,13 @@ loadRaptureIndexData = (APIendpointURL) ->
   xmlhttp.send()
   return
 
-loadRaptureIndexData('https://rapture-index-cors-api.appspot.com/')
+# load the data now and then again every 30 minutes
+endpointURL = 'https://rapture-index-cors-api.appspot.com/'
+loadRaptureIndexData endpointURL
+setInterval () ->
+	loadRaptureIndexData endpointURL
+	#console.log "reloading the data"
+, 1000 * 60 * 30
 
 categoryDescription = []
 #1. False Christs 
