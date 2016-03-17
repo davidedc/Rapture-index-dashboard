@@ -18,13 +18,20 @@ Uses the [Rapture Index CORS API](https://github.com/davidedc/Rapture-index-cors
 
 [![vimeo player screenshot](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/vimeo-player-screenshot.png)](https://vimeo.com/159250506)
 
+![img6](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-17-16.18.33.png)
 ![img6](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2747.JPG)
+![img7](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-17-16.16.57.png)
 ![img7](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2749.JPG)
+![img8](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-17-16.16.46.png)
 ![img8](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2751.JPG)
 
 # Why
 
 For sure you don't want to miss-out on these vital stats :-)
+
+# Reception
+
+"Look at him, with his ironic digital art pieces on the state of modern news reportage." - @stilliterate
 
 
 # How
