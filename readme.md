@@ -9,12 +9,14 @@ Uses the [Rapture Index CORS API](https://github.com/davidedc/Rapture-index-cors
   <img width="49%" src="https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_40_59.gif">
 </p>
 
+<p align="center">
+  <img width="49%" src="https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_46_12.gif">
+  <img width="49%" src="https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_48_03.gif">
+</p>
+
 ![img6](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2747.JPG)
 ![img7](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2749.JPG)
 ![img8](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2751.JPG)
-![img3](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_44_46.gif)
-![img4](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_46_12.gif)
-![img5](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_48_03.gif)
 
 # Why
 
