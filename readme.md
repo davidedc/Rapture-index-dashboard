@@ -4,11 +4,14 @@ A dashboard visualising data from [the Rapture index site](http://www.rapturerea
 
 Uses the [Rapture Index CORS API](https://github.com/davidedc/Rapture-index-cors-api) (another project of mine).
 
-![img1](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_31_18.gif)
+<p align="center">
+  <img width="49%" src="https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_31_18.gif">
+  <img width="49%" src="https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_40_59.gif">
+</p>
+
 ![img6](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2747.JPG)
 ![img7](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2749.JPG)
 ![img8](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/IMG_2751.JPG)
-![img2](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_40_59.gif)
 ![img3](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_44_46.gif)
 ![img4](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_46_12.gif)
 ![img5](https://raw.githubusercontent.com/davidedc/Rapture-index-dashboard/master/readme-images/2016-03-16-15_48_03.gif)
