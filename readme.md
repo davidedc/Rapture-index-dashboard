@@ -1,6 +1,8 @@
 # What
 
-A dashboard visualising data from [the Rapture index site](http://www.raptureready.com/). A possible description as follows: "the Rapture index is a Dow Jones Industrial Average of end time activity". The [related wikipedia page](https://en.wikipedia.org/wiki/Rapture_Ready) contains most interesting factoids about the index and the site.
+A dashboard visualising data from the Rapture index site. [Demo here.](http://davidedc.github.io/Rapture-index-dashboard/)
+
+A possible description as follows: "[the Rapture index](http://www.raptureready.com/) is a Dow Jones Industrial Average of end time activity". The [related wikipedia page](https://en.wikipedia.org/wiki/Rapture_Ready) contains most interesting factoids about the index and the site.
 
 Uses the [Rapture Index CORS API](https://github.com/davidedc/Rapture-index-cors-api) (another project of mine).
 
