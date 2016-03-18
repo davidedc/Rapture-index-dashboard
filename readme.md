@@ -36,7 +36,9 @@ For sure you don't want to miss-out on these vital stats :-)
 
 # How
 
-This is a static website which animates through the data fetched from the [Rapture Index CORS API](https://github.com/davidedc/Rapture-index-cors-api). Since the API uses cors, no further servers are needed, just the static site is OK. 
+This is a static website which animates through the data fetched from the [Rapture Index CORS API](https://github.com/davidedc/Rapture-index-cors-api). Since the API uses cors, no further servers are needed, just the static site is OK.
+
+There is some coffeescript to load the data and place it in the right divs and to manage the animations. To compile coffeescript to javascript transparently as you change the code, just use ```coffee --watch -c --bare --map *.coffee```.
 
 
 # Disclaimer
