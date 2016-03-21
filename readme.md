@@ -33,6 +33,8 @@ For sure you don't want to miss-out on these vital stats :-)
 
 "Look at him, with his ironic digital art pieces on the state of modern news reportage." - @stilliterate
 
+"This is brilliant. Million dollar idea right here, people!!" - @prawnstar
+
 
 # How
 
